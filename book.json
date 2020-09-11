@@ -1,0 +1,51 @@
+{
+    "title": "大数据指南",
+    "author": "dataown",
+    "description": "select * from learn 大数据架构师养成记",
+    "language": "zh-hans",
+    "links": {
+        "sidebar": {
+            "数据家": "https://bbs.dataown.cn"
+        }
+
+    },
+    "plugins": [
+        "-sharing",
+        "splitter",
+        "expandable-chapters-small",
+        "anchors",
+        "baidu-tongji-with-multiple-channel",
+        "github",
+        "github-buttons",
+        "donate",
+        "sharing-plus",
+        "anchor-navigation-ex",
+        "favicon"
+    ],
+    "pluginsConfig": {
+        "github": {
+            "url": "https://github.com/M2shad0w"
+        },
+        "github-buttons": {
+            "buttons": [{
+                "user": "M2shad0w",
+                "repo": "bigdata",
+                "type": "star",
+                "size": "small",
+                "count": true
+                }
+            ]
+        },
+        "donate": {
+            "alipay": "https://oss.dataown.cn/data/2020/8/95d81c58a8efe5fe19d10ba2a253dd43.png",
+            "title": "来杯咖啡吧",
+            "button": "赞赏",
+            "alipayText": "赞赏"
+        },
+        "baidu-tongji-with-multiple-channel": {
+            "token": "b94d73ddb8ab698ec9f5d5a7cef5189f"
+        }
+    }
+
+
+}
