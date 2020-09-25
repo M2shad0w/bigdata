@@ -1,7 +1,12 @@
 # mapreduce过程资源优化
 
 
- 要了解mapreduce的资源优化，首先应该要熟悉整个mapreduce的过程，大致流程可以分**为map，sort，spill，shuffle，reduce**等过程，分阶段的来分析一下，都有哪些可以进行调优。
+ > 要了解mapreduce的资源优化，首先应该要熟悉整个mapreduce的过程，大致流程可以分**为map，sort，spill，shuffle，reduce**等过程，分阶段的来分析一下，都有哪些可以进行调优。
+
+ 简单的过程总结为 
+ 1. map 阶段：读取 split 文件（一行行读取）（k/v）放入环形缓冲区中，进行分区，排序。环形缓冲区满了之后溢写到磁盘，形成较多的小文件。小文件之间无序，小文件内部有序，最后归并为一个全盘有序的文件。
+
+ 2. reduce 阶段：每个 split 对应一个 map， reduce 从多个 map 端读取数据，也要归并为一个有序文件，最后相同的 key 分成一组执行 reduce 操作。
 
  ![map reduce 流程图](https://oss.dataown.cn/data/2020/9/a7d1f7bf628b9aa6.png)
 

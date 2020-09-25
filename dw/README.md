@@ -4,7 +4,7 @@
 
 数据仓库是企业数据的大脑，是企业无形的资产。
 
-通过合理规划，科学建模方法论，建立面向主题，时变高效稳定集成的数据中台，方便决策，提升组织运行效率。
+通过合理规划，科学建模方法论，建立面向主题，高效稳定的数据中台，方便决策，提升组织运行效率。
 
 ## 数据中台
 
@@ -44,7 +44,7 @@
       <td align="center"><a href="model_level.md/#rpt">RPT</a></td>
       <td align="center">Report</a></td>
       <td align="center">报表数据层</a></td>
-      <td align="center">该层级的主要功能是提供报表数据，在该层级实现报表（数易、邮件报表）、自助取数等需求。</a></td>
+      <td align="center">该层级的主要功能是提供报表数据，在该层级实现报表（BI报表、邮件报表）、自助取数等需求。</a></td>
     </tr>
     <tr>
       <td align="center"><a href="model_level.md/#dm">DM</a></td>
@@ -92,14 +92,14 @@
       <td align="center"><a href="model_level.md/#stage">STAGE</a></td>
       <td align="center">Stage</a></td>
       <td align="center">数据接入层</a></td>
-      <td align="center">数仓分全量抽取加载和增量抽取加载，少量的基础的数据清洗（比如脏数据过滤、字符集转换、维值处理，'\n'、'\t' 等处理），对敏感数据进行加密处理，按数据来源进行命名加以区分</a></td>
+      <td align="center">数仓分全量抽取加载和增量抽取加载，少量的基础的数据清洗（比如脏数据过滤、字符集转换、维值处理，'\n'、'\t'、关键字、类型转换等处理），对敏感数据进行加密处理，按数据来源进行命名加以区分</a></td>
     </tr>
   </table>
 <br/>
 
 ### 模型分层
 
-![](https://oss.dataown.cn/data/2020/8/691e7dc1b029437e246b8ac2dc6fd754.png)
+![](https://oss.dataown.cn/images/2020/08/24/e8f7476b79f2b454338adcd85d062fcc.jpg)
 
 ### 功能架构
 

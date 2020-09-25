@@ -1,5 +1,12 @@
-# DataX
+# 数据接入
 
+数据接入是整个大数据的源头，汇聚了整个异构数据到大数据的仓库中，也是整个数据计算的起点。
+数据接入有以下要求和特点
+* 流控，避免对源头业务库造成影响
+* 并发，要能快速的获取同步数据
+* 异常处理，对异常数据能够抛出错误，及时发现
+
+这里要讲的是阿里开源的DataX这个工具。
 DataX 是阿里开源的一个异构数据源离线同步工具
 
 ## 架构
@@ -47,3 +54,41 @@ DataX 是阿里开源的一个异构数据源离线同步工具
 4. 健壮的容错机制 （重试次数设置）
 5. 丰富的数据转换功能
 6. DataX作为一个服务于大数据的ETL工具，除了提供数据快照搬迁功能之外，还提供了丰富数据转换的功能，让数据在传输过程中可以轻松完成数据脱敏，补全，过滤等数据转换功能，另外还提供了自动groovy函数，让用户自定义转换函数。
+
+## 利用dataX和调度接口构建OneClick应用
+
+> 例如将 mysql 增量同步到 hive 表中，主要是实现以下标准流程。
+
+1. hive stage层，ods层表结构根据mysql表结构确定（同时对字段类型做转换，对关键字处理）
+2. 数据的增量获取（通过对mysql binlog 订阅消费）
+3. stage 层缓冲的数据跟 ods 历史全量数据合并
+### 第一点实现
+通过 `mysql information_schema.COLUMNS，information_schema.TABLES` 获取对应表信息
+
+```sql
+select TABLE_SCHEMA ,TABLE_NAME ,COLUMN_NAME ,DATA_TYPE ,COLUMN_TYPE ,COLUMN_COMMENT 
+from information_schema.COLUMNS 
+where TABLE_SCHEMA = '{0}' and DATA_TYPE not in ('blob') 
+```
+
+### 第二点实现
+通过 canal 模拟 mysql 从库，获取 binlog 数据，otter 将数据sink到rocket mq中
+
+![](https://oss.dataown.cn/images/2020/08/24/d5308625a21bd7c1fb11dd5716d1d47a.jpg)
+
+并新增部分关键字段
+
+```
+"execute_time", -- 事件落到 mq 中的时间
+"event_type", -- 事件类型
+"binlog_name", -- binlog 名字
+"binlog_position" -- binlog 文件中偏移量
+```
+
+### 第三点实现
+> 增量表与历史全量实现 full join 合并生成新的全量表（先 row_number 排序再 full outer join）
+
+### 流程图
+
+![](https://oss.dataown.cn/data/2020/9/53eab810f4843b3f.png)
+

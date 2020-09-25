@@ -1,5 +1,14 @@
 ## 工具知识点
 
+### 组件
+
+1. kafka
+2. redis
+3. hbase
+4. flink
+5. spark
+6. hive
+
 ### hive
 
 1. 支持动态分区设置
@@ -55,13 +64,13 @@ set hive.input.format=org.apache.hadoop.hive.ql.io.CombineHiveInputFormat;
     mapred.max.split.size <= mapred.min.split.size.per.node <= mapred.min.split.size.per.rack
     ```  
 11. map和reduce的内存大小设置
-```
-set mapreduce.map.memory.mb=10240;
-set mapreduce.reduce.memory.mb=10240;
-#jvm的内存大小设置
-set mapreduce.map.java.opts=-Xmx8196m;
-set mapreduce.reduce.java.opts=-Xmx8196m;
-``` 
+    ```
+    set mapreduce.map.memory.mb=10240;
+    set mapreduce.reduce.memory.mb=10240;
+    #jvm的内存大小设置
+    set mapreduce.map.java.opts=-Xmx8196m;
+    set mapreduce.reduce.java.opts=-Xmx8196m;
+    ``` 
 12. reduce个数设置
 ```
 set hive.exec.reducers.max=400;
