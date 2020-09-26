@@ -12,4 +12,4 @@
 4. 选择事实
     > 确定分析需要衡量的指标。
 
-![数仓建模过程-参考大数据之路](https://oss.dataown.cn/data/2020/9/7279f9f01df0c1b7.png)
+![数仓建模过程-参考大数据之路](https://oss.dataown.cn/data/2020/9/824027e9a1fc8dc1.png)
